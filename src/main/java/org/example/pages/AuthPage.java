@@ -3,7 +3,7 @@ package org.example.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class EnterPage extends BasePage{
+public class AuthPage extends BasePage{
 
     private final By emailInput =
             By.xpath("//input[@type='email']");
@@ -26,19 +26,12 @@ public class EnterPage extends BasePage{
     private final By errorMessage =
             By.xpath("//*[contains(text(),'Invalid') or contains(text(),'incorrect') or contains(text(),'Неверный')]");
 
-    public EnterPage(WebDriver driver) {
+    public AuthPage(WebDriver driver) {
         super(driver);
     }
 
     public void open() {
         driver.get("https://www.songsterr.com/signin");
-    }
-
-    public void acceptCookiesIfPresent() {
-        By cookieButton = By.xpath("//button[contains(.,'Accept') or contains(.,'I agree')]");
-        try {
-            click(cookieButton);
-        } catch (Exception ignored) {}
     }
 
     public void enterEmail(String email) {

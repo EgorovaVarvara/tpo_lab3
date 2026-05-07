@@ -1,5 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.example.pages.EnterPage;
+import org.example.pages.AuthPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,14 +9,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class AuthTest {
     private WebDriver driver;
-    private EnterPage signInPage;
+    private AuthPage signInPage;
 
     @BeforeEach
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        signInPage = new EnterPage(driver);
+        signInPage = new AuthPage(driver);
         signInPage.open();
     }
 
