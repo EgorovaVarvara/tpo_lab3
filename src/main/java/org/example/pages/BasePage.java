@@ -34,4 +34,12 @@ public class BasePage {
     protected String getText(By locator) {
         return find(locator).getText();
     }
+
+    protected boolean isDisplayed(By locator) {
+        try {
+            return find(locator).isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
