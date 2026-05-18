@@ -106,7 +106,7 @@ public class RegTest {
     }
 
     @Test
-    public void existingEmailTest(){
+    public void existingEmailTest() throws InterruptedException {
         signUpPage.login(
                 "12345",
                 "evorovarvara7@gmail.com",
@@ -114,20 +114,19 @@ public class RegTest {
                 true
         );
 
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-//
-//        wait.until(driver ->
-//                signUpPage.isWrongFormInputErrorMessageDisplayed()
-//        );
-//
-//        wait.until(driver ->
-//                signUpPage.isWrongEmailMessageDisplayed()
-//        );
-//
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+        wait.until(driver ->
+                signUpPage.isWrongFormInputErrorMessageDisplayed()
+        );
+
+        wait.until(driver ->
+                signUpPage.isWrongEmailMessageDisplayed()
+        );
+
         Assertions.assertTrue(
                 signUpPage.isWrongFormInputErrorMessageDisplayed()
         );
-        System.out.println(driver.getPageSource());
         Assertions.assertTrue(
                 signUpPage.isWrongEmailMessageDisplayed()
         );
@@ -142,9 +141,6 @@ public class RegTest {
                 true
         );
 
-        Assertions.assertTrue(
-                signUpPage.isWrongFormInputErrorMessageDisplayed()
-        );
         Assertions.assertTrue(
                 signUpPage.isWrongFormInputErrorMessageDisplayed()
         );

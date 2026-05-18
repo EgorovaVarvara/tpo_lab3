@@ -1,7 +1,9 @@
 package org.example.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class RegPage extends BasePage{
 
@@ -14,7 +16,7 @@ public class RegPage extends BasePage{
     private final By passwordInput =
             By.xpath("//input[@type='password']");
 
-    private final By privacyCheckbox = By.xpath("//input[@name='terms']/ancestor::label");
+    private final By privacyCheckbox = By.xpath("//input[@name='terms']");
 
     private final By emptyInputErrorMessage =
             By.xpath("//*[contains(text(),'empty') or contains(text(),'пустым')]");
@@ -23,7 +25,7 @@ public class RegPage extends BasePage{
             By.xpath("//*[contains(text(),'Пожалуйста, исправьте ошибки и повторите попытку')]");
 
     private final By wrongEmailErrorMessage =
-            By.xpath("//*[contains(.,'Неверный адрес электронной почты') or contains(.,'С этим email уже существует аккаунт')]");
+            By.xpath("//*[contains(.,'Неверный адрес электронной почты') or contains(.,'уже существует')]");
 
     private final By wrongPasswordErrorMessage =
             By.xpath("//*[contains(text(),'Должно быть не менее 5 символов')]");
@@ -57,8 +59,14 @@ public class RegPage extends BasePage{
         type(passwordInput, password);
     }
 
+    protected void jsClick(By locator) {
+        WebElement el = find(locator);
+        ((JavascriptExecutor) driver)
+                .executeScript("arguments[0].click();", el);
+    }
+
     public void clickCheckbox(boolean click){
-        if (click) click(privacyCheckbox);
+        if (click) jsClick(privacyCheckbox);
     }
 
     public void clickSignUp() {
