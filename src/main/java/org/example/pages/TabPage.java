@@ -19,6 +19,19 @@ public class TabPage extends BasePage {
     public final By mixerControls = By.xpath("//button[@id='control-mixer']");
     public final By formatControls = By.xpath("//button[@name='display-mode']");
     public final By formatType = By.xpath("//a[contains(@role,'option')]");
+    public final By favoriteButton = By.xpath("//button[@id='favorite-toggle']");
+    public final By myTabs = By.xpath("//a[contains(@id,'menu-favorites')]");
+
+    // вынести в отдельную страницу
+    public final By favoritesList = By.xpath("//div[contains(@class,'favorites')]");
+    public final By createPlaylistButton = By.xpath("//button[@id='create-playlist']");
+    public final By playlistNameField = By.xpath("//textarea[contains(@class, 'playlistEdit')]");
+    public final By playlistList = By.xpath("//aside[@id='playlist-menu']");
+    public final By favoriteSongName = By.xpath("//div[contains(@class, 'name')]");
+    public final By addToPlaylistButton = By.xpath("//button[contains(@class, 'dots')]");
+    public final By dropdown = By.xpath("//div[contains(@class, 'dropdown')]");
+    public final By playlistSongs = By.xpath("//div[contains(@class,'favorites')]");
+    public final By stub = By.xpath("//div[contains(@class,'stub')]");
 
     public TabPage(WebDriver driver) {
         super(driver);
@@ -33,6 +46,10 @@ public class TabPage extends BasePage {
                         && !d.findElements(tabTablature).isEmpty()
                         && !d.findElements(tabControls).isEmpty()
         );
+    }
+
+    public void typeName(String name) {
+        type(playlistNameField, name);
     }
 
 }
